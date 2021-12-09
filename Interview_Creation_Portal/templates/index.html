@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+
+  <title>Hello, world!</title>
+</head>
+
+<body>
+    
+<!-- <div class="container">
+  <section>
+    <label for="exampleFormControlSelect1">select interview</label>
+    <select class="form-control" id="myMulti" multiple="multiple">
+      {% for i in interviewer %}
+      <option>{{i}}</option>
+      {% endfor %}
+    </select>
+  </section>
+</div> -->
+
+
+  <h1 style="text-align: center;">Schedule interview</h1>
+  <div class="container">
+    <form id='form' onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">start time</label>
+        <input id="start_time" type="datetime-local" name="start_time" min="2021-11-01T08:30" max="2030-06-30T16:30">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">end time</label>
+        <input id="end_time" type="datetime-local" name="end_time" min="2021-11-01T08:30" max="2030-06-30T16:30">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">select candidates</label>
+        <select  class="form-control" id="candidate">
+          {% for c in candidates %}
+          <option value="{{c}}">{{c}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">select interview</label>
+        <select class="form-control" id="interview" multiple="multiple">
+          {% for i in interviewer %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" onsubmit="submitForm(event)" class="btn btn-primary mb-2" >submit</button>
+    </form>
+  </div>
+  <div class="container">
+    <h1> Upcoming interviews </h1>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th style="width:300px">start time</th>
+          <th>end time</th>
+          <th>participants</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      {% for i in upcoming_interviews %}
+      <tbody>
+        <tr>
+          <td rowspan="{{ upcoming_interviews[i][2][0] | length }}">{{upcoming_interviews[i][0]}}</td>
+          <td rowspan="{{ upcoming_interviews[i][2][0] | length }}">{{upcoming_interviews[i][1]}}</td>
+          <td>{{upcoming_interviews[i][2][0]}}</td>
+          <td rowspan="{{ upcoming_interviews[i][2][0] | length }}">
+             <a href="/update/{{i}}" type="button" class="btn btn-primary mb-2" >Reschedule</a>
+             <button type="button" value="{{i}}" class="btn btn-primary mb-2 delete_interview" onclick="deleteInterview(this.value)" >Delete</button>
+          </td>
+        </tr>
+        {% for p in upcoming_interviews[i][2][1:] %}
+        <tr>
+          <td>{{p}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+
+  <script>
+
+  </script>
+    <script src="/static/index.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
