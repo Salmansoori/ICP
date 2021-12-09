@@ -1,5 +1,9 @@
 # ICP
 
+# Deployed Link:
+
+https://icp-scaler.herokuapp.com/
+
 # Setup
 
  Clone this repository.
