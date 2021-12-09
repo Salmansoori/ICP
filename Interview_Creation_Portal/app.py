@@ -178,6 +178,13 @@ def update(id):
     return render_template("update_form.html", interview=interview, id=id, interviewer=interviewer, candidates=candidates )        
 
 def get_candidates_and_interviewer():
+    
+    """
+    type => 1 for interviewer
+    type => 0 for candidate
+    
+    """
+    
     cur = mysql.connection.cursor()
     cur.execute("select * from participant")
     data = cur.fetchall()
