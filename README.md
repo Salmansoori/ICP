@@ -1,11 +1,11 @@
 # ICP
 
-Setup
+#Setup
 
-Clone this repository.
+ Clone this repository.
 
-install requirements.txt
+ install requirements.txt
 
-connect your database 
+ connect your database 
 
-then run app.py
+ then run app.py
