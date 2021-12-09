@@ -1,6 +1,6 @@
 # ICP
 
-#Setup
+# Setup
 
  Clone this repository.
 
